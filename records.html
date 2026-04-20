@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="app" ng-controller="ctrl">
+<input type="number" ng-model="newRoll" placeholder="Roll No">
+<input type="text" ng-model="newName" placeholder="Name">
+<input type="text" ng-model="newDept" placeholder="Department">
+<button ng-click="addStudent()">Add</button>
+<br><br>
+<table border="1" cellpadding="6" cellspacing="2">
+<tr>
+<th>Roll No</th>
+<th>Name</th>
+<th>Department</th>
+</tr>
+<tr ng-repeat="student in students">
+<td>{{ student.roll }}</td>
+<td>{{ student.name }}</td>
+<td>{{ student.dept }}</td>
+</tr>
+</table>
+<script>
+angular.module("app",[]).controller("ctrl",function($scope){
+$scope.students=[
+{roll:1,name:"Darshan",dept:"IT"},
+{roll:2,name:"Hamza",dept:"CSE"},
+{roll:3,name:"Lokesh",dept:"EXTC"}
+];
+$scope.addStudent=function(){
+if($scope.newRoll && $scope.newName && $scope.newDept){
+$scope.students.push({roll:$scope.newRoll,name:$scope.newName,dept:$scope.newDept});
+$scope.newRoll="";
+$scope.newName="";
+$scope.newDept="";
+}
+};
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[
+  { "name": "Max Verstappen", "team": "Red Bull Racing", "points": 433 },
+  { "name": "Sergio Perez", "team": "Red Bull Racing", "points": 224 },
+  { "name": "Lewis Hamilton", "team": "Mercedes", "points": 194 },
+  { "name": "Fernando Alonso", "team": "Aston Martin", "points": 183 },
+  { "name": "Carlos Sainz", "team": "Ferrari", "points": 153 },
+  { "name": "Charles Leclerc", "team": "Ferrari", "points": 135 },
+  { "name": "Lando Norris", "team": "McLaren", "points": 136 },
+  { "name": "George Russell", "team": "Mercedes", "points": 132 },
+  { "name": "Oscar Piastri", "team": "McLaren", "points": 83 },
+  { "name": "Pierre Gasly", "team": "Alpine", "points": 46 }
+]

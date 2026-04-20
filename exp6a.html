@@ -1,0 +1,17 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Load JSON Data</title> 
+</head> 
+<body> 
+<h2>Load JSON Data</h2> 
+<button onclick="loadData()">Load Sentences</button> 
+<ul id="output"></ul> 
+ 
+<script> function loadData() { var xhr = new XMLHttpRequest(); xhr.open("GET", "data.json", true); xhr.onload = function () { if (xhr.status === 200) { var data = JSON.parse(xhr.responseText); var sentences = data.sentences; var output = ""; for (var i = 0; i < sentences.length; i++) { output += "<li>" + sentences[i] + "</li>"; } 
+ 
+document.getElementById("output").innerHTML = output; 
+} }; xhr.send(); } 
+</script> 
+</body> 
+</html> 

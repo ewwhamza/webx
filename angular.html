@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html ng-app="helloApp">
+<head>
+<title>Hello World - AngularJS</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="HelloController">
+<h2>{{ message }}</h2>
+<script> var app = angular.module("helloApp", []); app.controller("HelloController", function($scope) {
+$scope.message = "Hello World";
+});
+</script>
+</body>
+</html>

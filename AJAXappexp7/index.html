@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX and JSP Experiment</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        #result { margin-top: 20px; color: blue; font-weight: bold; }
+    </style>
+    <script>
+        function sendAjaxRequest() {
+            // 1. Get the value from the input field
+            var userName = document.getElementById("nameInput").value;
+
+            // 2. Check if the input is empty
+            if (userName.trim() === "") {
+                document.getElementById("result").innerHTML = "Please enter a name.";
+                return;
+            }
+
+            // 3. Create the XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // 4. Configure the request (GET method, target URL, asynchronous = true)
+            var url = "process.jsp?name=" + encodeURIComponent(userName);
+            xhr.open("GET", url, true);
+
+            // 5. Define what happens when the state changes
+            xhr.onreadystatechange = function () {
+                // readyState 4 means the request is done. status 200 means successful return.
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Update the HTML portion with the response from JSP
+                    document.getElementById("result").innerHTML = xhr.responseText;
+                }
+            };
+
+            // 6. Send the request
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+
+    <h2>AJAX with JSP Demo</h2>
+    
+    <label for="nameInput">Enter your name:</label>
+    <input type="text" id="nameInput" onkeyup="sendAjaxRequest()">
+    
+    <div id="result"></div>
+
+</body>
+</html>

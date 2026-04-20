@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+    background: radial-gradient(circle at top right, #3b82f6, #1e3a8a);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 40px;
+    width: 450px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.search-box { 
+    display: flex; gap: 10px; 
+    margin-bottom: 25px;
+    color: black;
+}
+
+input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    outline: none;
+}
+
+button {
+    background: #60a5fa;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 0 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.error-msg {
+    background: rgba(239, 68, 68, 0.3);
+    border: 1px solid #ef4444;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.weather-info { text-align: center; animation: fadeIn 0.8s ease; }
+
+.city-name { font-weight: 300; font-size: 1.2rem; opacity: 0.9; }
+
+.emoji-display { font-size: 5rem; margin: 10px 0; }
+
+.temp { font-size: 4.5rem; font-weight: 600; line-height: 1; }
+
+.desc { font-size: 1.1rem; opacity: 0.7; margin-bottom: 30px; }
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.col p { font-size: 0.7rem; text-transform: uppercase; opacity: 0.6; }
+.col span { font-weight: 600; font-size: 1rem; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

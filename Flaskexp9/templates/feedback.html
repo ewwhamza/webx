@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div id="success-overlay" class="hidden">
+        <div class="glass-modal">
+            <div class="glow-icon">🚀</div>
+            <h3>Mission Accomplished!</h3>
+            <p>Your insights have been beamed to our team.</p>
+            <button type="button" class="neon-btn-alt" onclick="closeSuccess()">Return to Base</button>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="glass-container">
+            <header>
+                <h1>Rate your experience</h1>
+                <div class="status-line"></div>
+            </header>
+
+            <form id="feedbackForm">
+                <div class="row">
+                    <div class="field">
+                        <label>Identifier</label>
+                        <input type="text" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="field">
+                        <label>Contact</label>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Satisfaction Level</label>
+                    <div class="emoji-rating">
+                        <input type="radio" id="e5" name="rating" value="5"><label for="e5">🔥</label>
+                        <input type="radio" id="e4" name="rating" value="4"><label for="e4">😎</label>
+                        <input type="radio" id="e3" name="rating" value="3"><label for="e3">😐</label>
+                        <input type="radio" id="e2" name="rating" value="2"><label for="e2">🤔</label>
+                        <input type="radio" id="e1" name="rating" value="1"><label for="e1">💀</label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Internal Notes</label>
+                    <textarea name="comments" rows="3" placeholder="Drop your thoughts..."></textarea>
+                </div>
+
+                <button type="submit" class="neon-btn">Transmit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('feedbackForm');
+        const overlay = document.getElementById('success-overlay');
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('/', { method: 'POST', body: formData });
+            if (response.ok) {
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex-center');
+                form.reset();
+            }
+        };
+
+        function closeSuccess() {
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex-center');
+        }
+    </script>
+</body>
+</html>

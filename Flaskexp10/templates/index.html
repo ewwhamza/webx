@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Weather</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="glass-card">
+        <form action="/" method="POST" class="search-box">
+            <input style="background-color:white; color: black;" type="text" name="city" placeholder="Enter city..." required autocomplete="off">
+            <button type="submit">Search</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="error-msg">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {% if weather %}
+        <div class="weather-info">
+            <h2 class="city-name">{{ weather.city }}, {{ weather.country }}</h2>
+            <div class="emoji-display">{{ weather.emoji }}</div>
+            <p class="temp">{{ weather.temp }}°C</p>
+            <p class="desc">{{ weather.description }}</p>
+
+            <div class="details">
+                <div class="col">
+                    <p>Wind Speed</p>
+                    <span>{{ weather.wind }} km/h</span>
+                </div>
+                <div class="col">
+                    <p>Source</p>
+                    <span>Open-Meteo</span>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

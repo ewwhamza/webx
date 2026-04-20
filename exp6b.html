@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>AJAX User Validation</title> 
+</head> 
+<body> 
+<h2>User Validation Form</h2> Enter Username: 
+<input type="text" id="username"> 
+<br><br> 
+<button onclick="validateUser()">Submit</button> 
+<p id="result"></p> 
+ 
+<script> 
+function validateUser() { var username = document.getElementById("username").value;  var xhr = new XMLHttpRequest(); xhr.open("GET", "users.json", true); 
+xhr.onload = function () { if (xhr.status === 200) { 
+var data = JSON.parse(xhr.responseText); var validUsers = data.users; if (validUsers.includes(username)) { document.getElementById("result").innerHTML = "<span style='color:green;'>Username is valid!</span>"; 
+} else { 
+document.getElementById("result").innerHTML = 
+"<span style='color:red;'>Username not found!</span>"; 
+} 
+} }; xhr.send(); } 
+</script> 
+ 
+</body> 
+</html> 
+ 
